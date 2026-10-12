@@ -40,3 +40,11 @@ def test_shortened_link_with_pressure_is_high_risk():
     )
 
     assert result.level == "high"
+
+def test_gift_card_payment_demand_is_high_risk():
+    result = analyze_message("You owe $500. Pay immediately using an Apple gift card.")
+    assert result.level == "high"
+
+def test_account_deletion_threat_is_high_risk():
+    result = analyze_message("Your Instagram account will be deleted in 24 hours unless you log in here")
+    assert result.level == "high"
